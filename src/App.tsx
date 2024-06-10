@@ -20,9 +20,7 @@ function App() {
   // TODO fix the resize
   return (
     <div id="space">
-      <div id="content">
-        <h1>Hello World!</h1>
-      </div>
+      <h1>Hi! I'm Isaiah!</h1>
       {...makeStarfield(1000)}
     </div>
   )
