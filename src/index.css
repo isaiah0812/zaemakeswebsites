@@ -1,4 +1,8 @@
+:root {
+  --space-black: #000310;
+}
+
 body {
-  background-color: #000310;
+  background-color: var(--space-black);
   color: #F5F5F5;
 }

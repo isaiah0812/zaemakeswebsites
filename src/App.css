@@ -11,4 +11,5 @@
 
 #content {
   position: absolute;
+  z-index: 4500;
 }

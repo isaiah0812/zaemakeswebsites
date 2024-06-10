@@ -8,7 +8,7 @@ function makeStarfield(starCount: number) {
       <Star
         x={Math.random() * window.innerWidth}
         y={Math.random() * window.innerHeight}
-        size={Math.random() * 5}
+        size={Math.random() * 10}
       />
     );
   }
@@ -20,10 +20,10 @@ function App() {
   // TODO fix the resize
   return (
     <div id="space">
-      {...makeStarfield(500)}
       <div id="content">
         <h1>Hello World!</h1>
       </div>
+      {...makeStarfield(1000)}
     </div>
   )
 }
