@@ -22,8 +22,3 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
-
-h1::selection {
-  color: red;
-  background-color: pink;
-}
