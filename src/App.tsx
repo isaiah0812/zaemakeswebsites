@@ -1,7 +1,7 @@
 import { createContext, useEffect, useMemo, useState } from 'react';
 import './App.css'
 import Star from './components/star/Star'
-import Home from './pages/home/Home';
+import { Outlet } from 'react-router-dom';
 
 const messages = [
   "Hi! I'm Isaiah!",
@@ -43,11 +43,17 @@ function App() {
   }
 
   useEffect(() => {
-    if (messagePosition === messages.length - 1) toggleStars(true);
+    console.log('mounted');
+    if (
+      !(/^\/*$/.test(window.location.pathname)) ||
+      messagePosition === messages.length - 1
+    ) {
+      toggleStars(true);
+    }
   }, [messagePosition])
 
   const pages = useMemo(() => (
-    <Home />
+    <Outlet />
   ), [])
 
   // TODO fix the resize

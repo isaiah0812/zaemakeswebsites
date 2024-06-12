@@ -24,12 +24,16 @@ function Star(props: StarProps) {
     'Z';
 
   return (
-    <div className="star" style={{
+    <span className="star-wrap" style={{
       top: props.y,
       left: props.x,
-      clipPath: `path("${starShapePath}")`,
+      filter: `drop-shadow(0 0 ${size * .15}px #FFF)`,
       ...dimensions
-    }} />
+    }}>
+      <span className="star" style={{
+        clipPath: `path("${starShapePath}")`
+      }} />
+    </span>
   )
 }
 
