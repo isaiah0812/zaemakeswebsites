@@ -12,12 +12,16 @@ let position = 0;
 
 function makeStarfield(starCount: number) {
   const stars = [];
-  for (let i = 0; i < Math.floor(starCount); i++) {
+  const total = Math.floor(starCount);
+  for (let i = 0; i < total; i++) {
+    const size = Math.random() * 12;
+    const delay = Math.log2(.5 / size * i + 1);
     stars.push(
       <Star
         x={Math.random() * window.innerWidth}
         y={Math.random() * window.innerHeight}
-        size={Math.random() * 12}
+        size={size}
+        delay={delay <= 10 ? delay : 10}
       />
     );
   }

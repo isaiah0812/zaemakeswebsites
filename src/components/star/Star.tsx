@@ -1,9 +1,11 @@
+import { useEffect, useState } from 'react';
 import './Star.css';
 
 type StarProps = {
   x: number;
   y: number;
   size: number;
+  delay: number;
 }
 
 function Star(props: StarProps) {
@@ -23,11 +25,19 @@ function Star(props: StarProps) {
     `Q${controlPoint} ${.5 * size}, 0` +
     'Z';
 
+  const [ opacity, setOpacity ] = useState(0);
+
+  useEffect(() => {
+    setOpacity(1);
+  }, [])
+
   return (
     <span className="star-wrap" style={{
       top: props.y,
       left: props.x,
       filter: `drop-shadow(0 0 ${size * .15}px #FFF)`,
+      opacity,
+      transition: `opacity 1s ${props.delay}s ease-in-out`,
       ...dimensions
     }}>
       <span className="star" style={{
