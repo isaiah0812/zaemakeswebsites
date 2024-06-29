@@ -5,10 +5,7 @@ import './index.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Home from './pages/home/Home.tsx'
 import NotFound from './pages/notFound/NotFound.tsx'
-import Contact from './pages/contact/Contact.tsx'
-import Music from './pages/music/Music.tsx'
-import Projects from './pages/projects/Projects.tsx'
-import Skills from './pages/skills/Skills.tsx'
+import routes from './config/routes.ts'
 
 const router = createBrowserRouter([
   {
@@ -20,22 +17,10 @@ const router = createBrowserRouter([
         index: true,
         element: <Home />
       },
-      {
-        path: 'contact',
-        element: <Contact />
-      },
-      {
-        path: 'music',
-        element: <Music />
-      },
-      {
-        path: 'projects',
-        element: <Projects />
-      },
-      {
-        path: 'skills',
-        element: <Skills />
-      }
+      ...routes.map(route => ({
+        path: route.path,
+        element: <route.element />
+      }))
     ]
   }
 ])

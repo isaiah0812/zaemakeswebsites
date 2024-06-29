@@ -2,6 +2,8 @@ import { createContext, useEffect, useMemo, useState } from 'react';
 import './App.css'
 import Star from './components/star/Star'
 import { Outlet } from 'react-router-dom';
+import StarLink from './components/starLink/StarLink';
+import routes from './config/routes';
 
 const messages = [
   "Hi! I'm Isaiah!",
@@ -10,8 +12,23 @@ const messages = [
 ];
 let position = 0;
 
+// TODO make transition delays for stars appearing
+function makeStarLinks() {
+  return routes.map(route => (
+    <StarLink
+      x={route.linkProps.x}
+      y={route.linkProps.y}
+      color={route.linkProps.color}
+      path={'/' + route.path}
+      title={route.title}
+    />
+  ));
+}
+
+// TODO make a Galaxy component for a galaxy
+// TODO make a each star link their own type of link (Black Hole, Binary, Solar System, etc.)
 function makeStarfield(starCount: number) {
-  const stars = [];
+  const stars = [...makeStarLinks()];
   const total = Math.floor(starCount);
   for (let i = 0; i < total; i++) {
     const size = Math.random() * 12;
